@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <algorithm>
-#include "../lib/disc.h"
+#include "../lib/disco.h"
 #include "../lib/scanner.h"
 #include "../lib/structs.h"
 
@@ -21,7 +21,7 @@ class Disk {
         } Transition;
 
         void mkdisk(vector<string> tokens);
-        void makeDisk(string s, int f, string u, string p);
+        void makeDisk(string s, string f, string u, string p);
         void rmdisk(vector<string> tokens);
         void fdisk(string path);
         void generatepartition(string s, string u, string p, string t, string f, string n, string a);

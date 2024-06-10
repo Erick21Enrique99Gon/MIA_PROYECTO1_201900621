@@ -1,4 +1,5 @@
 #include "../lib/scanner.h"
+#include "../lib/disco.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -8,6 +9,8 @@
 #include <cstdlib>
 
 using namespace std;
+
+Disk disco;
 
 scanner::scanner(){}
 
@@ -46,6 +49,16 @@ void scanner::start(){
         cout << "------exit para salir ------------" << endl;
         cout << ">>";
     }
+}
+
+void scanner::errores(string operacion, string mensaje){
+    
+    cout << "\033[1;41m Error\033"<< "\033[0;31m(" + operacion + ")~~> \033[0m"<< mensaje << endl;
+}
+
+void scanner::respuesta(string operacion, string mensaje){
+    
+    cout << "\033[0;42m(" + operacion + ")~~> \033[0m"<< mensaje << endl;
 }
 
 string scanner::upper(string a){
@@ -149,7 +162,7 @@ void scanner::functions(string token, vector<string> tks)
     if (compare(token, "MKDISK"))
     {
         cout << "FUNCION MKDISK" << endl;
-        // disco.mkdisk(tks); 
+        disco.mkdisk(tks); 
     }
     // else if(compare(token, "RMDISK")){
     //     cout << "FUNCION RMDISK" << endl;

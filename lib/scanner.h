@@ -17,7 +17,7 @@ class scanner
         bool compare(string a, string b);
         string upper(string a);
         void errores(string operacion,string mensaje);
-        void respuestas(string operacion,string mensaje);
+        void respuesta(string operacion,string mensaje);
         void funcion_excec(vector<string> tokens);
         void excec(string path);
         bool confirm(string mensaje);
