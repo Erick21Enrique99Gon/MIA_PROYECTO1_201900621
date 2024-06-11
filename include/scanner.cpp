@@ -33,6 +33,7 @@ void scanner::start(){
             break;
         }
         string tk = token(texto);
+        texto.erase(0,tk.length()+1);
         cout << "Token: " << tk << endl;
         vector<string> tokens = split_tokens(texto);
         cout << "Tokens: ";
@@ -159,18 +160,20 @@ vector<string> scanner::split_tokens(string text){
 
 void scanner::functions(string token, vector<string> tks)
 {   
-    if (compare(token, "MKDISK"))
+    if (compare(token, "MKDISK"))   //mkdisk -s=1000 -u=m -path=\home\disk.dsk
     {
         cout << "FUNCION MKDISK" << endl;
         disco.mkdisk(tks); 
     }
-    // else if(compare(token, "RMDISK")){
-    //     cout << "FUNCION RMDISK" << endl;
-    //     //disco.rmdisk(tks);
-    // }else if(compare(token, "FDISK")){
-    //     cout << "FUNCION FDISK" << endl;
-    //     disco.fdisk(tks);
-    // }else if(compare(token, "MOUNT")){
+    else if(compare(token, "RMDISK")){ //rmdisk -path=\home\disk.dsk
+        cout << "FUNCION RMDISK" << endl;
+        disco.rmdisk(tks);
+    }
+    else if(compare(token, "FDISK")){
+        cout << "FUNCION FDISK" << endl;
+        disco.fdisk(tks);
+    }
+    // else if(compare(token, "MOUNT")){
     //     cout << "FUNCION MOUNT" << endl;
     //     mount.mount(tks);
     // }else if(compare(token, "UNMOUNT")){

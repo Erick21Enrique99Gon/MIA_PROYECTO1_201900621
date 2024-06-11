@@ -184,3 +184,54 @@ void Disk::makeDisk(string s, string f, string u, string path){\
     }
 
 }
+
+void Disk::rmdisk(vector<string> tokens){
+    string path = "";
+    bool error = false;
+    for (string &token : tokens)
+    {
+        string tk = token.substr(0, token.find("="));
+        token.erase(0, tk.length() + 1);
+        if (scan.compare(tk, "path"))
+        {
+            if (path.empty())
+            {
+                path = token;
+            }else{
+                scan.errores("RMDISK","parametro PATH repetido en el comando"+tk);
+            }
+        }else{
+            scan.errores("RMDISK","no se esperaba el parametro "+tk);
+            error = true;
+            break;
+        }
+    }
+
+    if(error){
+        return;
+    }
+
+    if(path.empty()){
+        scan.errores("RMDISK","se requiere parametro Path para este comando");
+    }
+    else
+    {
+        removeDisk(path);
+    }
+}
+
+void Disk::removeDisk(string p)
+{
+    try
+    {
+        string comando = "rm \""+ p + "\"";
+        system(comando.c_str());
+    }
+    catch(const std::exception& e)
+    {
+        cout << "Error al borrar disco\n" << endl;
+        std::cerr << e.what() << '\n';
+    }
+    
+}
+

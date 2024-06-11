@@ -23,6 +23,7 @@ class Disk {
         void mkdisk(vector<string> tokens);
         void makeDisk(string s, string f, string u, string p);
         void rmdisk(vector<string> tokens);
+        void removeDisk(string p);
         void fdisk(string path);
         void generatepartition(string s, string u, string p, string t, string f, string n, string a);
         void deletepartition(string d, string p, string n);
