@@ -20,6 +20,6 @@ class scanner
         void respuesta(string operacion,string mensaje);
         void funcion_excec(vector<string> tokens);
         void excec(string path);
-        bool confirm(string mensaje);
+        bool confirmar(string mensaje);
 };
 #endif

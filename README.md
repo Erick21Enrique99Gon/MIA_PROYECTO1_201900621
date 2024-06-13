@@ -1,1 +1,2 @@
+chmod 777 /home
 # MIA_PROYECTO1_201900621
