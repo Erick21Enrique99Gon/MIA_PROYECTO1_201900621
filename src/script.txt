@@ -11,3 +11,5 @@ fdisk -add=1000 -u=m -path=/tmp/disco.dsk -name=particion1
 #fdisk -delete=fast -name=particion1 -path=/tmp/disco.dsk
 #Elimina de forma completa una partición llamada Partición 1
 #fdisk -name=particion1 -delete=full -path=/tmp/disco.dsk
+#mount  -path=/tmp/disco.dsk  -name=particion1
+#unmount -id=211a
