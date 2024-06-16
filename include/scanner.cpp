@@ -1,6 +1,7 @@
 #include "../lib/scanner.h"
 #include "../lib/disco.h"
 #include "../lib/mount.h"
+#include "../lib/filesystem.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -243,12 +244,13 @@ void scanner::functions(string token, vector<string> tks)
         cout << "FUNCION *UNMOUNT" << endl;
         mount.unmount(tks);
     }
-    // else if(compare(token, "MKFS")){
-    //     cout << "FUNCION MKFS" << endl;
-    //     //FileSystem fileSystem = FileSystem(mount);
-    //     //fileSystem.mkfs(tks);
+    else if(compare(token, "MKFS")){
+        cout << "FUNCION MKFS" << endl;
+        FileSystem fileSystem = FileSystem(mount);
+        fileSystem.mkfs(tks);
 
-    // }else if(compare(token, "LOGIN")){
+    }
+    // else if(compare(token, "LOGIN")){
     //     cout << "FUNCION LOGIN" << endl;
     //     if(logued){
     //         //shared.handler("LOGIN", " ya existe una sesion abierta");
