@@ -168,7 +168,7 @@ void Mount::unmount(string id) {
 
 Structs::Partition Mount::getmount(string id, string *p) {
 
-    if (!(id[0] == '6' && id[1] == '5')) {
+    if (!(id[0] == '2' && id[1] == '1')) {
         throw runtime_error("el primer identificador no es válido");
     }
     string past = id;

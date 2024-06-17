@@ -13,3 +13,6 @@ fdisk -add=1000 -u=m -path=/tmp/disco.dsk -name=particion1
 #fdisk -name=particion1 -delete=full -path=/tmp/disco.dsk
 #mount  -path=/tmp/disco.dsk  -name=particion1
 #unmount -id=211a
+
+#mkfs -type=fast -fs=2fs -id=211a
+#LOGIN login -usr=root -pwd=123 -id=211a

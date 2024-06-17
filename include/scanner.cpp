@@ -1,7 +1,9 @@
 #include "../lib/scanner.h"
 #include "../lib/disco.h"
 #include "../lib/mount.h"
+#include "../lib/users.h"
 #include "../lib/filesystem.h"
+#include "../lib/report.h"
 
 #include <iostream>
 #include <stdlib.h>
@@ -14,6 +16,10 @@ using namespace std;
 
 Disk disco;
 Mount mount;
+Users user;
+bool logued = false;
+Shared shared;
+Report report;
 
 scanner::scanner(){}
 
@@ -248,17 +254,17 @@ void scanner::functions(string token, vector<string> tks)
         cout << "FUNCION MKFS" << endl;
         FileSystem fileSystem = FileSystem(mount);
         fileSystem.mkfs(tks);
+    }
+    else if(compare(token, "LOGIN")){
+        cout << "FUNCION LOGIN" << endl;
+        if(logued){
+            shared.handler("LOGIN", " ya existe una sesion abierta");
+            return;
+        }
+        logued = user.login(tks,mount);
 
     }
-    // else if(compare(token, "LOGIN")){
-    //     cout << "FUNCION LOGIN" << endl;
-    //     if(logued){
-    //         //shared.handler("LOGIN", " ya existe una sesion abierta");
-    //         return;
-    //     }
-    //     //logued = user.login(tks,mount);
-
-    // }else if(compare(token, "LOGOUT")){
+    // else if(compare(token, "LOGOUT")){
     //     cout << "FUNCION LOGOUT" << endl;
     //     if(!logued){
     //     //    shared.handler("LOGOUT", " debe de iniciar sesion primero");
@@ -307,13 +313,13 @@ void scanner::functions(string token, vector<string> tks)
     //     cout << "FUNCION MKDIR" << endl;
     //     //Structs::Partition partition = mount.getmount(user.logged.id, &p);
     //     //filemanager.mkdir(tks, partition, p);
-    // }else if(compare(token, "REP")){
-    //     cout << "FUNCION REPORTES" << endl;
-    //     //report.generar(tks, mount);
-    // }
-    // else if(compare(token.substr(0,1),"#")){
-    //     respuesta("COMENTARIO",token);
-    // }
+    }else if(compare(token, "REP")){
+        cout << "FUNCION REPORTES" << endl;
+        report.generar(tks, mount);
+    }
+    else if(compare(token.substr(0,1),"#")){
+        respuesta("COMENTARIO",token);
+    }
     else{
         cout << "El comando ingresado no se reconoce en el sistema \""+token+"\"" << endl;
     //     errores("SYSTEM","El comando ingresado no se reconoce en el sistema \""+token+"\"");
