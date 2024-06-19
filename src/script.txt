@@ -1,18 +1,16 @@
 #exec -path=script.txt
-rmdisk -path=/tmp/disco.dsk
-mkdisk -u=m -s=10000 -path=/tmp/disco.dsk
-fdisk -s=500 -path=/tmp/disco.dsk -name=particion1
-fdisk -add=1000 -u=m -path=/tmp/disco.dsk -name=particion1
+rmdisk -path=/home/disco.dsk
+mkdisk -u=m -s=10 -path=/home/disco.dsk
+fdisk -s=5 -path=/home/disco.dsk -name=particion1
 
-#fdisk -t=E -path=/tmp/disco.dsk -u=m -s=3000 -name=Particion1
-#fdisk -s=1 -t=L -u=b -f=BF -path="/tmp/disco.dsk" -name=particion325
+mount  -path=/home/disco.dsk  -name=particion1 
+#unmount -id=211a LOGIN 
 
-
-#fdisk -delete=fast -name=particion1 -path=/tmp/disco.dsk
-#Elimina de forma completa una partición llamada Partición 1
-#fdisk -name=particion1 -delete=full -path=/tmp/disco.dsk
-#mount  -path=/tmp/disco.dsk  -name=particion1
-#unmount -id=211a
-
-#mkfs -type=fast -fs=2fs -id=211a
-#LOGIN login -usr=root -pwd=123 -id=211a
+mkfs -type=fast -fs=2fs -id=211a
+login -usr=root -pwd=123 -id=211a
+#rep -id=211a -Path=/home/reports2/reporte2.jpg -name=bm_block
+#rmgrp -name="grupo 1 grupo 2 grupo 3 grupo 4 grupo 5 grupo 6 grupo 6"
+#mkgrp -name="grupo 1 grupo 2 grupo 3 grupo 4 grupo 5 grupo 6 grupo 6"
+#Logout
+#login -usr=root -pwd=123 -id=211a
+#mkusr -usr=user1 -pass=usuario -grp=usuarios

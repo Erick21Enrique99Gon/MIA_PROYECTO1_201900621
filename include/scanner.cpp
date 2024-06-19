@@ -264,39 +264,41 @@ void scanner::functions(string token, vector<string> tks)
         logued = user.login(tks,mount);
 
     }
-    // else if(compare(token, "LOGOUT")){
-    //     cout << "FUNCION LOGOUT" << endl;
-    //     if(!logued){
-    //     //    shared.handler("LOGOUT", " debe de iniciar sesion primero");
-    //         return;
-    //     }
-    //     //logued = user.logout();
+    else if(compare(token, "LOGOUT")){
+        cout << "FUNCION LOGOUT" << endl;
+        if(!logued){
+            shared.handler("LOGOUT", " debe de iniciar sesion primero");
+            return;
+        }
+        logued = user.logout();
+    }
+    else if(compare(token, "MKGRP")){
+        if(!logued){
+            shared.handler("MKGRP", " debe de iniciar sesion primero");
+            return;
+        }
+        cout << "FUNCION MKGRP" << endl;
+        user.grp(tks,"MK");
 
-    // }else if(compare(token, "MKGRP")){
-    //     if(!logued){
-    //     //    shared.handler("MKGRP", " debe de iniciar sesion primero");
-    //         return;
-    //     }
-    //     cout << "FUNCION MKGRP" << endl;
-    //     //user.grp(tks,"MK");
+    }
+    else if(compare(token, "RMGRP")){
+        if(!logued){
+            shared.handler("RMGRP", " debe de iniciar sesion primero");
+            return;
+        }
+        cout << "FUNCION RMGRP" << endl;
+        user.grp(tks,"RM");
 
-    // }else if(compare(token, "RMGRP")){
-    //     if(!logued){
-    //     //    shared.handler("RMGRP", " debe de iniciar sesion primero");
-    //         return;
-    //     }
-    //     cout << "FUNCION RMGRP" << endl;
-    //     //user.grp(tks,"RM");
-
-    // }else if(compare(token, "MKUSR")){
-    //     if(!logued){
-    //     //    shared.handler("MKUSR", " debe de iniciar sesion primero");
-    //         return;
-    //     }
-    //     cout << "FUNCION MKUSR" << endl;
-    //     //user.usr(tks,"MK");
-
-    // }else if(compare(token, "RMUSR")){
+    }
+    else if(compare(token, "MKUSR")){
+        if(!logued){
+            shared.handler("MKUSR", " debe de iniciar sesion primero");
+            return;
+        }
+        cout << "FUNCION MKUSR" << endl;
+        user.usr(tks,"MK");
+    }
+    // else if(compare(token, "RMUSR")){
     //     if(!logued){
     //     //    shared.handler("RMUSR", " debe de iniciar sesion primero");
     //         return;
@@ -313,7 +315,8 @@ void scanner::functions(string token, vector<string> tks)
     //     cout << "FUNCION MKDIR" << endl;
     //     //Structs::Partition partition = mount.getmount(user.logged.id, &p);
     //     //filemanager.mkdir(tks, partition, p);
-    }else if(compare(token, "REP")){
+    // }
+    else if(compare(token, "REP")){
         cout << "FUNCION REPORTES" << endl;
         report.generar(tks, mount);
     }
